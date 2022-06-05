@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app
+spec:
+  selector:
+    matchLabels:
+      run: test-app
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        run: test-app
+    spec:
+      containers:
+      - name: test-app
+        image: 8392019284.dkr.ecr.us-west-1.amazonaws.com/defi-api:1.0.0
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: node-configmap
+          mountPath: /usr/share/app/config/production.js
+          subPath: production.js
+      nodeSelector:
+        type: application
+      
