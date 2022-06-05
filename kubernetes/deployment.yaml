@@ -6,13 +6,6 @@ spec:
   selector:
     matchLabels:
       run: test-app
-  replicas: 2
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 1
-  template:
     metadata:
       labels:
         run: test-app
