@@ -26,6 +26,10 @@ spec:
         - name: node-configmap
           mountPath: /usr/share/app/config/production.js
           subPath: production.js
+      volumes:
+      - name: node-configmap
+        configMap:
+          name: node-configmap
       nodeSelector:
         type: application
       
