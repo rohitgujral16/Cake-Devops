@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-configmap
+  labels:
+    run: test-app
+data:
+  production.js: |
+    database_url: jdbc://postgresql:5432/test
+    database_password: test123
+    database_user: test
+    database_port: 5432
